@@ -14,7 +14,7 @@
 function date_tools_change_type_form() {
   $form = array();
   // This is broken, still needs to be adjusted for the D6->D7 changes.
-  drupal_set_message(t('This operation does not yet work for the Drupal 7 version.'), 'error');
+  backdrop_set_message(t('This operation does not yet work for the Drupal 7 version.'), 'error');
   return $form;
   $fields = content_fields();
   $date_options = array();
@@ -36,7 +36,7 @@ function date_tools_change_type_form() {
     }
   }
   if (count($date_options) < 1) {
-    drupal_set_message(t('There are no date fields in this database.'));
+    backdrop_set_message(t('There are no date fields in this database.'));
     return $form;
   }
   $form['date_field'] = array(
@@ -108,20 +108,20 @@ function date_tools_change_type_form_submit($form, &$form_state) {
 
   // Change the field definition to the new type.
   $field['type'] = $new_type;
-  require_once './' . drupal_get_path('module', 'content') . '/includes/content.crud.inc';
+  require_once './' . backdrop_get_path('module', 'content') . '/includes/content.crud.inc';
   content_field_instance_update($field, FALSE);
   content_clear_type_cache();
 
   // If there's no data to update, we're finished.
   if (!$has_data) {
-    drupal_set_message(t('The field @field_name has been changed from @old_type to @new_type.', array(
+    backdrop_set_message(t('The field @field_name has been changed from @old_type to @new_type.', array(
     '@field_name' => $field['widget']['label'], '@old_type' => $labels[$old_type], '@new_type' => $labels[$new_type])));
     return;
   }
 
   // Replace old values with modified values, massaging the original values as
   // necessary for the new type.
-  require_once './' . drupal_get_path('module', 'date_api') . '/date_api_sql.inc';
+  require_once './' . backdrop_get_path('module', 'date_api') . '/date_api_sql.inc';
   $date_handler = new date_sql_handler();
   $date_handler->granularity = $field['granularity'];
   $date_handler->date_type = $old_type;
@@ -187,7 +187,7 @@ function date_tools_change_type_form_submit($form, &$form_state) {
   db_query($sql);
   db_query("DROP TABLE {" . $temp_table . "}");
 
-  drupal_set_message(t('The field @field_name has been changed from @old_type to @new_type.', array(
+  backdrop_set_message(t('The field @field_name has been changed from @old_type to @new_type.', array(
     '@field_name' => $field['widget']['label'],
     '@old_type' => $labels[$old_type],
     '@new_type' => $labels[$new_type]

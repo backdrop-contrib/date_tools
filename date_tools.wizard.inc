@@ -152,7 +152,7 @@ function date_tools_wizard_form_validate(&$form, &$form_state) {
   $existing_instance = db_query($query, $args)->fetchField();
 
   if ($existing_type) {
-    drupal_set_message(t('This content type name already exists, adding new field to existing content type.'));
+    backdrop_set_message(t('This content type name already exists, adding new field to existing content type.'));
   }
   if (!preg_match('!^[a-z0-9_]+$!', $bundle)) {
     form_set_error('bundle', t('The machine-readable name must contain only lowercase letters, numbers, and underscores.'));
@@ -206,7 +206,7 @@ function date_tools_wizard_build($form_values) {
   if (!array_key_exists($bundle, $types)) {
     date_tools_wizard_create_content_type($name, $bundle, $type_description, $type_settings);
 
-    drupal_set_message(t('Your content type @name has been created.', array('@name' => $name)));
+    backdrop_set_message(t('Your content type @name has been created.', array('@name' => $name)));
   }
   else {
     $types = node_type_get_types();
@@ -298,7 +298,7 @@ function date_tools_wizard_build($form_values) {
   field_info_cache_clear(TRUE);
   field_cache_clear(TRUE);
 
-  drupal_set_message(t('Your date field @name has been created.', array('@name' => $label)));
+  backdrop_set_message(t('Your date field @name has been created.', array('@name' => $label)));
 
   return $view_name;
 }
@@ -348,7 +348,7 @@ function date_tools_wizard_widget_types() {
  * @todo.
  */
 function date_tools_wizard_tz_handling() {
-  include_once drupal_get_path('module', 'date') . '/date_admin.inc';
+  include_once backdrop_get_path('module', 'date') . '/date_admin.inc';
   return date_timezone_handling_options();
 }
 
@@ -394,7 +394,7 @@ function date_tools_wizard_create_content_type($name, $bundle, $description, $ty
   node_type_save((object) $values);
 
   // Add the body field.
-  $trim_length = variable_get('teaser_length', 600);
+  $trim_length = config_get('date.settings','teaser_length');
 
   $field = field_info_field('body');
   $instance = array(
