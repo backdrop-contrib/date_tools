@@ -1,7 +1,7 @@
 <h1>About Date_tools for BackdropCMS</h1>
 -------------------------
 
-This module is a port to Backdrop of one parts of the Drupal contributed module 'Date': date_tools.
+This module is a port to Backdrop of one part of the Drupal contributed module 'Date': date_tools.
 
 Its purpose is to provide tools to import and auto-create dates and calendars.
 
