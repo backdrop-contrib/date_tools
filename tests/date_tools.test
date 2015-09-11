@@ -12,8 +12,8 @@ class DateToolsTestCase extends BackdropWebTestCase {
    * @todo.
    */
   public function setUp() {
-    // Load the date_api module.
-    parent::setUp('field', 'field_ui', 'date_api', 'date', 'date_popup', 'date_tools');
+    // Load
+    parent::setUp('field', 'field_ui', 'date', 'date_tools');
 
     // Create and log in our privileged user.
     $this->privileged_user = $this->backdropCreateUser(
