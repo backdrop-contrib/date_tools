@@ -145,11 +145,10 @@ function date_tools_wizard_form_validate(&$form, &$form_state) {
     ':entity_type' => 'node',
   );
 
-  $query = "SELECT type FROM {node_type} WHERE type=:bundle";
+  $query = "SELECT type FROM {node} WHERE type=:bundle";
   $existing_type = db_query($query, array(':bundle' => $args[':bundle']))->fetchField();
 
-  $query = "SELECT field_name FROM {field_config_instance} WHERE field_name=:field_name AND bundle=:bundle AND entity_type=:entity_type";
-  $existing_instance = db_query($query, $args)->fetchField();
+  $existing_instance = config_get("field.instance.$existing_type.$bundle.$field_name");
 
   if ($existing_type) {
     backdrop_set_message(t('This content type name already exists, adding new field to existing content type.'));
