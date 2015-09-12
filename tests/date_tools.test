@@ -12,7 +12,6 @@ class DateToolsTestCase extends BackdropWebTestCase {
    * @todo.
    */
   public function setUp() {
-    // Load
     parent::setUp('field', 'field_ui', 'date', 'date_tools');
 
     // Create and log in our privileged user.
@@ -67,7 +66,7 @@ class DateToolsTestCase extends BackdropWebTestCase {
    */
   function deleteDateField() {
     $this->backdropGet('admin/structure/types/manage/story/fields');
-    $this->clickLink('delete');
+    $this->clickLink('Delete');
     $this->backdropPost(NULL, NULL, t('Delete'));
     $this->assertText('The field Test has been deleted from the Story content type.', 'Removed date field.');
   }
