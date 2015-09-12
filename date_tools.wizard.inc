@@ -429,3 +429,24 @@ function date_tools_wizard_create_content_type($name, $bundle, $description, $ty
   field_create_instance($instance);
 
 }
+
+/**
+ * Timezone handling options.
+ *
+ * The 'none' option will do no timezone conversions and will store and display
+ * dates exactly as entered useful in locales or situations where timezone
+ * conversions are not working reliably, for dates with no times, for historical
+ * dates where timezones are irrelevant, or anytime conversion is unnecessary or
+ * undesirable.
+ */
+function date_timezone_handling_options() {
+  return array(
+    'site' => t("Site's time zone"),
+    'date' => t("Date's time zone"),
+    'user' => t("User's time zone"),
+    'utc'  => 'UTC',
+    'none' => t('No time zone conversion'),
+  );
+}
+
+
