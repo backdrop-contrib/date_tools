@@ -1,32 +1,37 @@
-<h1>About Date_tools for BackdropCMS</h1>
--------------------------
+# Date Tools
 
-This module is a port to Backdrop of one part of the Drupal contributed module 'Date': date_tools.
+The Date Tools project provides tools to import and auto-create 
+dates and calendars. It supplements the core module Date.
 
-Its purpose is to provide tools to import and auto-create dates and calendars.
+This module is a port to Backdrop of one part of the Drupal project 'Date'.
+
+## Installation
+
+- Install this module using the official Backdrop CMS instructions at
+  https://backdropcms.org/guide/modules.
+
+- No configuration is needed.
 
 
-<h2>Status</h2>
+## License
 
-This is the initial port of this module as a stand-alone project for Backdrop
-
-
-
-<h2>License</h2>
-
-This project is GPL v2 software. See the LICENSE.txt file in this directory for complete text.
+This project is GPL v2 software. See the LICENSE.txt file in this directory
+for complete text.
     
     
-<h2>Current Maintainers</h2>
+## Current Maintainer for Backdrop
 
-<h3>For Drupal:</h3>
-
-vijaycs85 - Vijayachandran Mani;  cafuego - Peter Lieverdink;  KarenS - Karen Stevenson;  arlinsandbulte - Arlin Sandbulte;  developer-x
+Graham Oliver (github.com/Graham-72/)
 
 
-<h3>Port to Backdrop:</h3>
-Graham Oliver github.com/Graham-72
+## Credits
 
-<h3>Acknowledgement</h3>
+### Drupal Maintainers
+- vijaycs85 - Vijayachandran Mani;
+- cafuego - Peter Lieverdink;  
+- KarenS - Karen Stevenson;  
+- arlinsandbulte - Arlin Sandbulte;  
+- developer-x
 
-This port to Backdrop would not, of course, be possible without all the work done by the developers and maintainers of the Drupal module.
+
+ 
